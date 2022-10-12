@@ -1,0 +1,32 @@
+<launch> 
+<!-- station/rover launch file -->
+   <!-- <include file="$(find bringup_pkg)/launch/arduino.launch" /> -->
+   <!-- <include file="$(find bringup_pkg)/launch/rplidar_a3.launch" /> -->
+
+    <!-- imu node -->
+    <!-- <node name="imu"        	                pkg="bringup_pkg"            type="imu_adfr_pkg.py">
+    </node> -->
+
+    <!-- gps node -->
+    <node name="gps_mpoint"        	            pkg="nav"            type="gps_multipoints.py"            output ="screen"  >
+    <rosparam param="limit_dis">1</rosparam>                           
+    </node>
+
+    <!-- integrate gps + imu -->
+    <node name="gps_imu"                        pkg="nav"            type="gps_imu.py"                    output ="screen"  >
+    <rosparam param="limit_dis">1</rosparam>
+    <rosparam param="limit_angle">5</rosparam>
+    <rosparam param="rate">5</rosparam>
+    <rosparam param="wait">3</rosparam>
+    </node>
+
+    <!-- avoidance -->
+    <node name="lidar"        	                pkg="nav"            type="lidar.py">
+    </node>
+
+    <!-- avoidance + navigation -->
+    <node name="stage1"        	                pkg="nav"            type="stage1_v2.py">
+    <!-- <remap from="stage1_motion" to="motion"/> -->
+    </node>
+
+</launch>

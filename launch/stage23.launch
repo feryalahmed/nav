@@ -1,0 +1,17 @@
+<launch> 
+<!-- station/rover launch file -->
+    <include file="$(find bringup_pkg)/launch/arduino.launch" />
+    <include file="$(find bringup_pkg)/launch/rplidar_a3.launch" />
+
+    <!-- imu node -->
+    <node name="imu"        	                pkg="bringup_pkg"            type="imu_adfr_pkg.py">
+    </node>
+
+    <node name="stage2_v1"        	                pkg="nav"            type="stage2_v1.py">
+    </node>
+
+    <node name="stage3"        	                pkg="nav"            type="stage3.py">
+    </node>
+
+
+</launch>

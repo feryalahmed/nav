@@ -1,0 +1,10 @@
+<launch> 
+<!-- station/rover launch file -->
+    <!-- <include file="$(find bringup_pkg)/launch/arduino.launch" />
+    <include file="$(find bringup_pkg)/launch/rplidar_a3.launch" /> -->
+
+    <node name="stage3"        	                pkg="nav"            type="stage3_v2.py">
+    </node>
+
+
+</launch>
